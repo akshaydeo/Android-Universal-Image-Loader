@@ -77,6 +77,12 @@ public class BaseImageDecoder implements ImageDecoder {
 		} else {
 			decodedBitmap = considerExactScaleAndOrientaiton(decodedBitmap, decodingInfo, imageInfo.exif.rotation, imageInfo.exif.flipHorizontal);
 		}
+		// closing stream
+		try{
+			imageStream.close();
+		}catch(Exception ignored){
+			// ignoring all other exceptions
+		}
 		return decodedBitmap;
 	}
 
